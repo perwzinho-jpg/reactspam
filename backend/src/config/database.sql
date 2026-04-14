@@ -1,9 +1,6 @@
 -- ES TURBO Database Schema
 -- WhatsApp Marketing Automation Platform
 
-CREATE DATABASE IF NOT EXISTS perwzinho_reactspam CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE perwzinho_reactspam;
-
 -- Users Table
 CREATE TABLE IF NOT EXISTS users (
   id INT AUTO_INCREMENT PRIMARY KEY,

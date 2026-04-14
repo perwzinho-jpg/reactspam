@@ -11,11 +11,11 @@ async function run() {
     const sqlPath = path.resolve('src', 'config', 'database.sql');
     const sql = await fs.promises.readFile(sqlPath, 'utf-8');
 
-    // create a connection without specifying the database so we can create it
     const connection = await mysql.createConnection({
       host: process.env.DB_HOST || 'localhost',
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || '',
+      database: process.env.DB_NAME || 'es_turbo',
       port: process.env.DB_PORT || 3306,
       multipleStatements: true // allow running entire file at once
     });
