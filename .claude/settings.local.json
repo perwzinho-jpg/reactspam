@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run install:all:*)",
+      "Bash(mysql:*)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "Bash(TOKEN=\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc2ODQ0NjA3OCwiZXhwIjoxNzY5MDUwODc4fQ.qAsHVkv82Q5HxIiU3E33F7Wr4patG9coM5FhqJuIE44\")",
+      "Bash(TOKEN=\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc2ODQ0NjEyNCwiZXhwIjoxNzY5MDUwOTI0fQ.hEeZaOmiZuodQZnQtn62aNmITOmvbUHoIS3BapbWS_I\")",
+      "Bash(node activate-user.js:*)",
+      "Bash(TOKEN=\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc2ODQ0NjEyNCwiZXhwIjoxNzY5MDUwODc4fQ.qAsHVkv82Q5HxIiU3E33F7Wr4patG9coM5FhqJuIE44\")",
+      "Bash(node -e:*)",
+      "Bash(node cleanup-console.js:*)",
+      "Bash(ssh:*)",
+      "Bash(scp:*)",
+      "Bash(powershell -Command \"Get-ChildItem -Recurse -Include *.jsx,*.js | ForEach-Object { \\(Get-Content $_FullName -Raw\\) -replace ''ReactZapi'', ''ReactSpam'' | Set-Content $_FullName -NoNewline }\")",
+      "Bash(ssh-add:*)",
+      "Bash(ls:*)",
+      "Bash(powershell:*)",
+      "Bash(/c/Windows/System32/OpenSSH/ssh.exe:*)",
+      "WebSearch",
+      "WebFetch(domain:developer.z-api.io)",
+      "Bash(node --experimental-modules teste-botao-db.js:*)",
+      "Bash(node --experimental-modules:*)",
+      "Bash(move:*)",
+      "Bash(node teste-botao-db.js:*)",
+      "Bash(start \"\" \"C:\\\\Users\\\\Bruno\\\\Desktop\\\\reactspam\\\\backend\\\\qrcode.png\")",
+      "Bash(timeout:*)",
+      "Bash(sshpass -p \"@Bruninho01ab\" scp -o StrictHostKeyChecking=no \"C:\\\\Users\\\\Bruno\\\\Desktop\\\\reactspam\\\\backend\\\\src\\\\services\\\\campaignProcessor.js\" root@72.60.158.24:/var/www/reactspam/backend/src/services/)",
+      "Bash(python3 -c \"\nimport paramiko\nimport json\n\nssh = paramiko.SSHClient\\(\\)\nssh.set_missing_host_key_policy\\(paramiko.AutoAddPolicy\\(\\)\\)\nssh.connect\\(''72.60.158.24'', username=''root'', password=''@Bruninho01ab''\\)\n\n# Criar script de teste na VPS\ntest_script = ''''''\nconst mysql = require\\(\"\"mysql2/promise\"\"\\);\nconst https = require\\(\"\"https\"\"\\);\n\nconst PHONE = \"\"5551989770867\"\";\n\nfunction makeRequest\\(url, method, data, headers = {}\\) {\n  return new Promise\\(\\(resolve, reject\\) => {\n    const urlObj = new URL\\(url\\);\n    const options = {\n      hostname: urlObj.hostname,\n      port: 443,\n      path: urlObj.pathname,\n      method,\n      headers: { \"\"Content-Type\"\": \"\"application/json\"\", ...headers }\n    };\n    const req = https.request\\(options, res => {\n      let body = \"\"\"\";\n      res.on\\(\"\"data\"\", c => body += c\\);\n      res.on\\(\"\"end\"\", \\(\\) => {\n        try { resolve\\({status: res.statusCode, data: JSON.parse\\(body\\)}\\); }\n        catch\\(e\\) { resolve\\({status: res.statusCode, data: body}\\); }\n      }\\);\n    }\\);\n    req.on\\(\"\"error\"\", reject\\);\n    if \\(data\\) req.write\\(JSON.stringify\\(data\\)\\);\n    req.end\\(\\);\n  }\\);\n}\n\nasync function test\\(\\) {\n  const conn = await mysql.createConnection\\({host:\"\"localhost\"\",user:\"\"root\"\",password:\"\"\"\",database:\"\"es_turbo\"\"}\\);\n  \n  // Buscar instancia conectada\n  const [instances] = await conn.execute\\(\"\"SELECT z.instance_id, z.instance_token, z.client_token FROM zapi_instances z JOIN instances i ON i.zapi_instance_id = z.id WHERE i.status = ''connected'' LIMIT 1\"\"\\);\n  \n  if \\(instances.length === 0\\) {\n    console.log\\(\"\"Nenhuma instancia conectada!\"\"\\);\n    await conn.end\\(\\);\n    return;\n  }\n  \n  const inst = instances[0];\n  const base = \"\"https://api.z-api.io/instances/\"\" + inst.instance_id + \"\"/token/\"\" + inst.instance_token;\n  const headers = inst.client_token ? {\"\"Client-Token\"\": inst.client_token} : {};\n  \n  // Verificar conexao\n  console.log\\(\"\"Verificando conexao...\"\"\\);\n  const st = await makeRequest\\(base + \"\"/status\"\", \"\"GET\"\", null, headers\\);\n  console.log\\(\"\"Conectado:\"\", st.data.connected ? \"\"SIM\"\" : \"\"NAO\"\"\\);\n  \n  if \\(!st.data.connected\\) {\n    console.log\\(\"\"Instancia desconectada!\"\"\\);\n    await conn.end\\(\\);\n    return;\n  }\n  \n  // Enviar botao\n  console.log\\(\"\"Enviando mensagem com BOTAO...\"\"\\);\n  const btnRes = await makeRequest\\(base + \"\"/send-button-actions\"\", \"\"POST\"\", {\n    phone: PHONE,\n    title: \"\"Teste VPS\"\",\n    message: \"\"Mensagem enviada da VPS com botao!\"\",\n    footer: \"\"Teste funcionando\"\",\n    buttonActions: [{id:\"\"1\"\", type:\"\"URL\"\", label:\"\"Acessar Site\"\", url:\"\"https://google.com\"\"}]\n  }, headers\\);\n  \n  console.log\\(\"\"HTTP:\"\", btnRes.status\\);\n  console.log\\(\"\"Resultado:\"\", btnRes.data.messageId ? \"\"ENVIADO COM SUCESSO!\"\" : \"\"FALHOU\"\"\\);\n  if \\(btnRes.data.messageId\\) console.log\\(\"\"MessageID:\"\", btnRes.data.messageId\\);\n  \n  await conn.end\\(\\);\n}\n\ntest\\(\\);\n''''''\n\n# Salvar e executar script\nstdin, stdout, stderr = ssh.exec_command\\(f''echo {repr\\(test_script\\)} > /tmp/test_button.js && cd /var/www/reactspam/backend && node /tmp/test_button.js''\\)\nout = stdout.read\\(\\).decode\\(''utf-8'', errors=''replace''\\)\nerr = stderr.read\\(\\).decode\\(''utf-8'', errors=''replace''\\)\n\nprint\\(''=== TESTE NA VPS ===''\\)\nprint\\(out\\)\nif err: print\\(''Erros:'', err\\)\n\nssh.close\\(\\)\n\")"
+    ]
+  }
+}

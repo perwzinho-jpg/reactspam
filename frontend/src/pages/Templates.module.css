@@ -1,0 +1,536 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.header p {
+  color: var(--text-secondary);
+}
+
+.createBtn {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--blue-dark) 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 12px var(--blue-glow);
+  cursor: pointer;
+}
+
+.createBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.loader {
+  text-align: center;
+  padding: 4rem;
+  color: var(--text-secondary);
+}
+
+.emptyState {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 4rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.emptyState svg {
+  color: var(--text-muted);
+  opacity: 0.6;
+  margin-bottom: 1.5rem;
+}
+
+.emptyState h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.emptyState p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  max-width: 500px;
+}
+
+.emptyState .createBtn {
+  margin-top: 0.5rem;
+}
+
+.templateGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.templateCard {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.templateCard:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--border-light);
+}
+
+.templateHeader {
+  background: linear-gradient(135deg, var(--primary-blue), var(--blue-dark));
+  color: white;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.templateHeader h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.templateActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.editBtn, .deleteBtn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.deleteBtn:hover {
+  background: var(--error);
+  border-color: var(--error);
+  transform: scale(1.05);
+}
+
+.templateBody {
+  padding: 1.25rem;
+}
+
+/* WhatsApp Preview */
+.whatsappPreview {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #e5ddd5;
+  background-image: 
+    repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,.03) 10px, rgba(0,0,0,.03) 20px);
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.whatsappMessage {
+  max-width: 75%;
+  background: #ffffff;
+  border-radius: 8px 8px 8px 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.whatsappMessage::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 8px 13px 0;
+  border-color: transparent #ffffff transparent transparent;
+}
+
+.whatsappImage {
+  width: 100%;
+  max-height: 200px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.whatsappImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.whatsappTitle {
+  padding: 0.75rem 1rem 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.whatsappText {
+  padding: 0.75rem 1rem;
+  color: #111b21;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: none;
+  overflow: visible;
+}
+
+.expandTextBtn {
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  color: #0084ff;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.expandTextBtn:hover {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.whatsappFooter {
+  padding: 0.5rem 1rem 0.75rem;
+  color: #667781;
+  font-size: 0.8125rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: 0.5rem;
+}
+
+.whatsappButton {
+  margin: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #0084ff;
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: default;
+  transition: background-color 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 132, 255, 0.3);
+  user-select: none;
+  display: inline-block;
+  width: calc(100% - 1rem);
+  text-decoration: none;
+}
+
+.whatsappButton:hover {
+  background: #0066cc;
+}
+
+.whatsappButtonUrl {
+  margin: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 132, 255, 0.1);
+  color: #0084ff;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  word-break: break-all;
+  border: 1px solid rgba(0, 132, 255, 0.2);
+}
+
+.templateInfo {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.templateField {
+  margin-bottom: 1rem;
+}
+
+.templateField:last-child {
+  margin-bottom: 0;
+}
+
+.templateField strong {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.messagePreviewContainer {
+  margin-top: 0.5rem;
+}
+
+.messagePreview {
+  color: var(--text-primary);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  background: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  word-wrap: break-word;
+}
+
+.expandTextBtnInfo {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--primary-blue);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.expandTextBtnInfo:hover {
+  color: var(--blue-dark);
+  text-decoration: underline;
+}
+
+.buttonUrl {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 14, 39, 0.9);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.modalContent {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-xl);
+}
+
+.modalHeader {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--secondary-bg);
+}
+
+.modalHeader h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.closeBtn {
+  background: var(--hover-bg);
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.closeBtn:hover {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+.form {
+  padding: 2rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--secondary-bg);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: all var(--transition-base);
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px var(--blue-glow);
+  background: var(--card-bg);
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formGroup small {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.cancelBtn {
+  background: var(--secondary-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.cancelBtn:hover {
+  background: var(--hover-bg);
+  border-color: var(--border-light);
+}
+
+.submitBtn {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--blue-dark) 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 12px var(--blue-glow);
+  cursor: pointer;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .templateGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}

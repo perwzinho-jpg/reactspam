@@ -1,0 +1,86 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 1000;
+}
+
+.dropdownToggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary, #666);
+  border-radius: 4px;
+  transition: all 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+.dropdownToggle:hover {
+  background: var(--hover-bg, rgba(0, 0, 0, 0.05));
+  color: var(--text-primary, #333);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: var(--card-bg, white);
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 99999;
+  min-width: 160px;
+  overflow: hidden;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownItem {
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-primary, #333);
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.dropdownItem:hover {
+  background: var(--hover-bg, #f5f5f5);
+}
+
+.dropdownItem.danger {
+  color: var(--error, #dc3545);
+}
+
+.dropdownItem.danger:hover {
+  background: var(--error-bg, #fff5f5);
+  color: var(--error-dark, #c82333);
+}
+
+.dropdownItem .icon {
+  display: flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+}
+
