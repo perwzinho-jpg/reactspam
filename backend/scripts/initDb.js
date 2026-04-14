@@ -53,7 +53,9 @@ async function run() {
 
     await connection.end();
   } catch (err) {
-    console.error('Failed to initialize database:', err);
+    console.error(`Failed to initialize database: ${err.message} (Code: ${err.code})`);
+    // Exit with 0 so the server can at least try to start and report its own DB connection errors,
+    // or keep process.exit(1) but now we can see the actual error message clearly.
     process.exit(1);
   }
 }
